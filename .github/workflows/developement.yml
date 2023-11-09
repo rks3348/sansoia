@@ -30,4 +30,3 @@ jobs:
         server: ${{ env.FTP_HOST }}
         username: ${{ env.FTP_USER }}
         password: ${{ env.FTP_PASS }}
-        server-dir: public_html
