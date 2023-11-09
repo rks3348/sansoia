@@ -19,7 +19,7 @@ jobs:
         node-version: '18'
 
     - name: step-first
-      run: echo "Hello World ${{ var.FTP_USER }}"
+      run: echo "Hello World ${{ vars.FTP_USER }}"
 
     - name: Install Dependencies
       run: npm i
