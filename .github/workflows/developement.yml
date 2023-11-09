@@ -19,7 +19,7 @@ jobs:
         node-version: '18'
 
     - name: step-first
-      run: echo "Hello World ${{ env.FTP_USER }}"
+      run: echo "Hello World ${{ var.FTP_USER }}"
 
     - name: Install Dependencies
       run: npm i
@@ -28,8 +28,9 @@ jobs:
       run: npm run build
     
     - name: 📂 Sync files
+      enviroment: production
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ftp.sansoia.com
-        username: ${{ env.FTP_USER }}
-        password: ${{ env.FTP_PASS }}
+        username: ${{ vars.FTP_USER }}
+        password: ${{ vars.FTP_PASS }}
