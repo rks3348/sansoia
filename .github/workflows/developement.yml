@@ -9,7 +9,7 @@ jobs:
   deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
-    environment: production
+    # environment: production
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
@@ -20,7 +20,7 @@ jobs:
         node-version: '18'
 
     - name: step-first
-      run: echo "Hello World ${{ vars.FTP_USER }}"
+      run: echo "Hello World ${{ secrets.FTP_USER }}"
 
     - name: Install Dependencies
       run: npm i
@@ -32,5 +32,5 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ftp.sansoia.com
-        username: ${{ vars.FTP_USER }}
-        password: ${{ vars.FTP_PASS }}
+        username: ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASS }}
