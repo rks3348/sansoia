@@ -29,7 +29,6 @@ jobs:
       run: npm run build
     
     - name: 📂 Sync files
-      enviroment: production
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ftp.sansoia.com
