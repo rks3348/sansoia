@@ -27,6 +27,6 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: ${{ env.FTP_HOST }}
+        server: ftp.sansoia.com
         username: ${{ env.FTP_USER }}
         password: ${{ env.FTP_PASS }}
