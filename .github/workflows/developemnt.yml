@@ -1,6 +1,9 @@
 name: 🚀 Deploy manual
 
-on: push
+on:
+  workflow_dispatch:
+    branches:
+      - development
 
 jobs:
   deploy:
