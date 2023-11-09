@@ -2,7 +2,7 @@ name: 🚀 Deploy manual
 
 on:
   workflow_dispatch:
-    branches:
+    inputs:
       - development
 
 jobs:
