@@ -37,7 +37,7 @@ jobs:
       run: npm run build
     - name: Deploy
       run: |
-        aws s3 cp --recursive --region ${{ env.AWS_REGION }} dist s3:sansoia-prd
+        aws s3 cp --recursive --region ${{ env.AWS_REGION }} dist s3://sansoia-prd
     - name: Cache Clear
       run: |
         aws cloudfront create-invalidation --region ${{ env.AWS_REGION }} --distribution-id ${{ env.CLOUD_FRONT_DISTRIBUTION }} --paths "/*"
