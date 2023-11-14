@@ -1,18 +1,18 @@
-name: 🚀 Deploy manual
+name: 🚀 Deploy AWS
 
 on:
   workflow_dispatch:
     branches:
       - main
 
-  permission:
-    id-token: write
-    contents: read
+permission:
+  id-token: write
+  contents: read
 
-  env:
-    AWS_REGION: ap-south-1
-    AWS_ROLE_ARN: arn:aws:iam::972490039859:role/sansoia-prd-github-action-role
-    CLOUD_FRONT_DISTRIBUTION: arn:aws:cloudfront::972490039859:distribution/E17YAUXDGZDBIR
+env:
+  AWS_REGION: ap-south-1
+  AWS_ROLE_ARN: arn:aws:iam::972490039859:role/sansoia-prd-github-action-role
+  CLOUD_FRONT_DISTRIBUTION: arn:aws:cloudfront::972490039859:distribution/E17YAUXDGZDBIR
 
 jobs:
   build:
