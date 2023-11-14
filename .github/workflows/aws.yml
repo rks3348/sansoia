@@ -1,0 +1,43 @@
+name: 🚀 Deploy manual
+
+on:
+  workflow_dispatch:
+    branches:
+      - main
+
+  permission:
+    id-token: write
+    contents: read
+
+  env:
+    AWS_REGION: ap-south-1
+    AWS_ROLE_ARN: arn:aws:iam::972490039859:role/sansoia-prd-github-action-role
+    CLOUD_FRONT_DISTRIBUTION: arn:aws:cloudfront::972490039859:distribution/E17YAUXDGZDBIR
+
+jobs:
+  build:
+    name: 🎉 Checkout
+    runs-on: ubuntu-latest
+    # environment: production
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+
+    - name: Configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
+        role-session-name: deploy-role-session
+        aws-region: ${{ env.AWS_REGION }}
+
+    - name: Install Dependencies
+      run: npm i
+
+    - name: Build
+      run: npm run build
+    - name: Deploy
+      run: |
+        aws s3 cp --recursive --region ${{ env.AWS_REGION }} dist s3:sansoia-prd
+    - name: Cache Clear
+      run: |
+        aws cloudfront create-invalidation --region ${{ env.AWS_REGION }} --distribution-id ${{ env.CLOUD_FRONT_DISTRIBUTION }} --paths "/*"
