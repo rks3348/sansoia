@@ -1,4 +1,4 @@
-name: 🚀 Deploy manual
+name: 🚀 Deploy AWS
 
 on:
   workflow_dispatch:
