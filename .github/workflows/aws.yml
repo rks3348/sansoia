@@ -11,7 +11,7 @@ permissions:
 
 env:
   AWS_REGION: ap-south-1
-  AWS_ROLE_ARN: arn:aws:iam::972490039859:role/sansoia-prd-github-action-role
+  AWS_ROLE_ARN: arn:aws:iam::279155684726:role/xtraffic-prd-github-action-role
   CLOUD_FRONT_DISTRIBUTION: E17YAUXDGZDBIR
 
 jobs:
